@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="/styles.css">
+    <link rel="icon" href="/icons/favicon.svg">
+</head>
+<body>
+    <main class="page-container">
+        <div class="auth-container">
+            <h1 class="color-title">Sign Up</h1>
+            <form method="POST" action="/sign-up" class="auth-form">
+                <div class="form-input-container">
+                    <label for="username">Username: </label>
+                    <input type="text" name="username" id="username">
+                </div>
+
+                <div class="form-input-container">
+                    <label for="email">Email: </label>
+                    <input type="email" name="email" id="email">
+                </div>
+
+                <div class="form-input-container">
+                    <label for="password">Password: </label>
+                    <input type="text" name="password" id="password">
+                </div>
+
+                <div class="form-input-container">
+                    <label for="confirm-password">Confirm Password: </label>
+                    <input type="text" name="confirm-password" id="confirm-password">
+                </div>
+
+                <div class="sign-up-btn-container">
+                    <a href="/login">Cancel</a>
+                    <button class="confirm-button" type="submit">Submit</button>
+                </div>
+            </form>
+        </div>
+    </main>
+</body>
+</html>
