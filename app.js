@@ -7,6 +7,8 @@ import { prisma } from "./db/prisma.js";
 import bcrypt from "bcryptjs";
 import { PrismaSessionStore } from "@quixo3/prisma-session-store";
 
+import authRouter from "./routers/authRouter.js";
+
 const app = express();
 
 const PORT = process.env.PORT;
@@ -81,6 +83,8 @@ passport.deserializeUser(async (id, done) => {
         done(err)
     }
 });
+
+app.use("/", authRouter);
 
 
 // Unmatched routes
