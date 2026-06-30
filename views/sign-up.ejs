@@ -10,6 +10,13 @@
 </head>
 <body>
     <main class="page-container">
+        <% if (locals.errors) { %>
+            <ul>
+                <% errors.forEach((error) => { %>
+                    <li><%= error.msg %></li>
+                <% }); %>
+            </ul>
+        <% } %>
         <div class="auth-container">
             <h1 class="color-title">Sign Up</h1>
             <form method="POST" action="/sign-up" class="auth-form">
