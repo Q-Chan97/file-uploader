@@ -8,6 +8,7 @@ import bcrypt from "bcryptjs";
 import { PrismaSessionStore } from "@quixo3/prisma-session-store";
 
 import authRouter from "./routers/authRouter.js";
+import appRouter from "./routers/appRouter.js"
 
 const app = express();
 
@@ -73,7 +74,6 @@ passport.deserializeUser(async (id, done) => {
         const user = await prisma.user.findUnique({
             where: { id: id }
         })
-
         if (!user) {
             return done(null, false)
         }
@@ -84,6 +84,7 @@ passport.deserializeUser(async (id, done) => {
     }
 });
 
+app.use("/", appRouter);
 app.use("/", authRouter);
 
 
