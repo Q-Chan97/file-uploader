@@ -1,4 +1,3 @@
-import { prisma } from "../db/prisma.js";
 import bcrypt from "bcryptjs";
 import { createUser, createDefaultFolder } from "../db/queries.js";
 
@@ -21,4 +20,11 @@ export async function postSignUp (req, res, next) {
     } catch (err) {
         next(err);
     }
+}
+
+export async function forwardAuthenticated(req, res, next) {
+    if (!req.isAuthenticated()) {
+        return next();
+    }
+    res.redirect("/")
 }
