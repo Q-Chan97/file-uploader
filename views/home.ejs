@@ -5,17 +5,34 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vaultly: File Uploader</title>
+    <link rel="stylesheet" href="/styles.css">
+    <link rel="icon" href="/icons/favicon.svg">
 </head>
 <body>
     <% if (locals.user) { %>
-        <main>
-            <p>You're here and logged in!</p>
+        <main class="page-container">
+            <%-include("./partials/sidebarPartial.ejs") %>
+            <section class="main-content">
+                <%-include("./partials/uploadDialogPartial.ejs") %>
+                <%-include("./partials/uploadButtonPartial.ejs") %>
+                <div>
+                    <ul>
+                        <li>File</li>
+                        <li>File</li>
+                        <li>File</li>
+                        <li>File</li>
+                    </ul>
+                </div>
+            </section>
         </main>
     <% } else { %>
-        <main>
+        <main class="page-container">
             <p>No user logged in.</p>
             <a href="/login">Click Here to log in</a>
         </main>
     <% } %>
+    <script>
+        const dialog = document.getElementById("upload-dialog");
+    </script>
 </body>
 </html>
