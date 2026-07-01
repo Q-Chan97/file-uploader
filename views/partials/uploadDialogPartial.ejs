@@ -1,0 +1,23 @@
+<dialog id="upload-dialog">
+    <form method="POST" action="/uploadFile" enctype="multipart/form-data">
+        <div>
+            <label for="folder">Choose a folder (optional):</label>
+            <select name="folder" id="folder">
+                <option value=""></option>
+                <% if (locals.folders && locals.folders.length > 0) { %>
+                    <% locals.folders.forEach((folder) => { %>
+                    <option value="<%= folder.id %>"><%= folder.name %></option>
+                <% }) %>
+                <% } %>
+            </select>
+        </div>
+        <div>
+            <label for="newFile">Choose a file: </label>
+            <input type="file" name="newFile" id="newFile">
+        </div>
+        <div>
+            <button type="button" onclick=dialog.close()>Close</button>
+            <button type="submit">Upload</button>
+        </div>
+    </form>
+</dialog>
