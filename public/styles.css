@@ -256,3 +256,10 @@ p, h1, h2, h3, h4, h5, h6 {
 .upload-icon {
     width: 32px;
 }
+
+/* Files */
+
+.file-row {
+    display: flex;
+    flex-direction: row;
+}
