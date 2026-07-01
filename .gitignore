@@ -1,6 +1,9 @@
 #Env variables
 .env
 
+#Filesystem uploads
+uploads/
+
 # Logs
 logs
 *.log
