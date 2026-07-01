@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vaultly: File Uploader</title>
+    <link rel="stylesheet" href="/styles.css">
+    <link rel="icon" href="/icons/favicon.svg">
+</head>
+<body>
+    <% if (locals.user) { %>
+        <main class="page-container">
+            <%-include("./partials/sidebarPartial.ejs") %>
+            <section class="main-content">
+                <%-include("./partials/uploadDialogPartial.ejs") %>
+                <%-include("./partials/uploadButtonPartial.ejs") %>
+                <div>
+                    <ul>
+                        <% if (locals.files && files.length > 0) { %>
+                            <% locals.files.forEach((file) => { %>
+                                <li>
+                                    <div>
+                                        <p><%= file.fileName %></p>
+                                        <p><%= file.fileSize %></p>
+                                        <p><%= file.fileType %></p>
+                                        <p>Uploaded on: <%= file.uploadedAt %></p>
+                                        <p>Last updated: <%= file.updatedAt %></p>
+                                    </div>
+                                </li>
+                            <% }) %>
+                        <% } else { %>
+                            <p>No files in folder.</p>
+                        <% } %>
+                    </ul>
+                </div>
+            </section>
+        </main>
+    <% } else { %>
+        <main class="page-container">
+            <p>No user logged in.</p>
+            <a href="/login">Click Here to log in</a>
+        </main>
+    <% } %>
+    <script>
+        const dialog = document.getElementById("upload-dialog");
+    </script>
+</body>
+</html>
