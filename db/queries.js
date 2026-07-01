@@ -18,3 +18,11 @@ export const createDefaultFolder = async (userId) => {
         }
     })
 }
+
+export const getUserFolders = async (userId) => {
+    return await prisma.folder.findMany({
+        where: {
+            userId: userId,
+        }
+    })
+}
