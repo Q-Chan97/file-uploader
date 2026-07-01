@@ -84,9 +84,8 @@ passport.deserializeUser(async (id, done) => {
     }
 });
 
-app.use("/", appRouter);
 app.use("/", authRouter);
-
+app.use("/", appRouter);
 
 // Unmatched routes
 app.use((req, res) => {
