@@ -17,10 +17,18 @@
                 <%-include("./partials/uploadButtonPartial.ejs") %>
                 <div>
                     <ul>
-                        <li>File</li>
-                        <li>File</li>
-                        <li>File</li>
-                        <li>File</li>
+                        <% if (locals.files && files.length > 0) { %>
+                            <% locals.files.forEach((file) => { %>
+                                <li>
+                                    <div class="file-row">
+                                        <p><%= file.fileName %></p>
+                                        <p><%= file.fileSize %> bytes</p>
+                                    </div>
+                                </li>
+                            <% }) %>
+                        <% } else { %>
+                            <p>No files uploaded yet.</p>
+                        <% } %>
                     </ul>
                 </div>
             </section>
