@@ -1,0 +1,13 @@
+<dialog id="update-folder-dialog">
+    <form method="POST" action="/folder/<%= folder.id %>/edit">
+        <div>
+            <label for="folderName">New Name: </label>
+            <input type="text" name="newName" id="newName" required>
+        </div>
+
+        <div>
+            <button type="button" onclick="updateFolderDialog.close()">Close</button>
+            <button type="submit">Update Folder</button>
+        </div>
+    </form>
+</dialog>
