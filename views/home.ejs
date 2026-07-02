@@ -28,7 +28,7 @@
 
                                         <p>Created on: <span class="date" data-date="<%= file.uploadedAt %>"></span></p>
 
-                                        <p>Size: <%= file.fileSize %> bytes</p>
+                                        <p>Size: <%= (Number(file.fileSize) / 1048576).toFixed(2) %> mb</p>
 
                                         <p>Kind: <%= file.fileType %></p>
 
