@@ -18,9 +18,6 @@ export async function uploadFile(req, res) {
     const folderId = req.body.folder;
     await createNewFile(req.file, req.user.id, folderId);
 
-    console.log("folderId from form: ", folderId);
-    console.log("file", req.file)
-
     if (folderId) {
         res.redirect(`/folder/${folderId}`)
     } else {
@@ -30,16 +27,12 @@ export async function uploadFile(req, res) {
 
 export async function getFolderView(req, res) {
     const folderId = parseInt(req.params.folderId);
-    console.log("folderId:", folderId)
 
     const folders = await getUserFolders(req.user.id); // All folders for the sidebar
-    console.log("folders", folders)
 
     const folder = await getFolderById(folderId); // Current folder for the view
-    console.log("folder", folder)
 
     const folderFiles = await getFilesByFolderId(folderId);
-    console.log("Folder files: ", folderFiles)
 
     res.render("folderView", {user: req.user, folders: folders, folder: folder, files: folderFiles})
 }
