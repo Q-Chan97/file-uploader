@@ -20,7 +20,7 @@
                 <div class="folder-info">
                     <h2><%= folder.name %></h2>
                     <button type="button" class="folder-edit-button" onclick="updateFolderDialog.showModal()">Rename Folder</button>
-                    <form method="POST" action="/folder/<%= folder.id %>/delete">
+                    <form method="POST" action="/folder/<%= folder.id %>/delete" onsubmit="return confirm('Are you sure you want to delete this folder?')">
                         <button type="submit" class="folder-delete-button">Delete Folder</button>
                     </form>
                 </div>
