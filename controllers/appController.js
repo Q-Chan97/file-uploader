@@ -1,4 +1,4 @@
-import { getUserFolders, createNewFile, getAllUserFiles, getFolderById, getFilesByFolderId, createNewFolder, deleteSingleFile, getFileById } from "../db/queries.js";
+import { getUserFolders, createNewFile, getAllUserFiles, getFolderById, getFilesByFolderId, createNewFolder, deleteSingleFile, getFileById, changeFolderName, deleteFolderById } from "../db/queries.js";
 
 export async function ensureAuthenticated (req, res, next) {
     if (req.isAuthenticated()) {
@@ -56,4 +56,21 @@ export async function downloadFile(req, res) {
     const file = await getFileById(fileId);
 
     res.download(file.locationPath, file.fileName);
+}
+
+export async function deleteFolder(req, res) {
+    const folderId = parseInt(req.params.folderId);
+
+    await deleteFolderById(folderId);
+
+    res.redirect("/");
+}
+
+export async function renameFolder(req, res) {
+    const folderId = parseInt(req.params.folderId);
+    const newFolderName = req.body.newName;
+
+    await changeFolderName(folderId, newFolderName);
+
+    res.redirect(`/folder/${folderId}`)
 }
