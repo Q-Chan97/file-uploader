@@ -188,6 +188,13 @@ p, h1, h2, h3, h4, h5, h6 {
     width: 50px;
 }
 
+.user-welcome {
+    display: flex;
+    text-align: center;
+    font-size: 1.7rem;
+    margin: 0.5rem;
+}
+
 .create-folder-button {
     color: var(--primary-color);
     background-color: white;
