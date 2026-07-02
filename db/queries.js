@@ -20,6 +20,15 @@ export const createDefaultFolder = async (userId) => {
     })
 }
 
+export const createNewFolder = async (userId, folderName) => {
+    return await prisma.folder.create({
+        data: {
+            userId: userId,
+            name: folderName,
+        }
+    })
+}
+
 export const getUserFolders = async (userId) => {
     return await prisma.folder.findMany({
         where: {
@@ -40,7 +49,7 @@ function checkFileExt(file) {
         txt: "text/plain",
         svg: "image/svg+xml",
     };
-    
+
     const extName = path.extname(file.originalname).toLowerCase().replace(".", "");
     const expectedMime = allowedMimetypes[extName];
 
