@@ -103,6 +103,33 @@ export const getFolderById = async (folderId) => {
     })
 }
 
+export const changeFolderName = async (folderId, newName) => {
+    return await prisma.folder.update({
+        where: {id: folderId},
+        data: {
+            name: newName,
+        }
+    })
+}
+
+export const deleteFolderById = async (folderId) => {
+
+    await prisma.file.updateMany({
+        where: {
+            folderId: folderId,
+        },
+        data: {
+            folderId: null,
+        }
+    })
+
+    return await prisma.folder.delete({
+        where: {
+            id: folderId,
+        }
+    })
+}
+
 export const getFilesByFolderId = async(folderId) => {
     return await prisma.file.findMany({
         where: {
