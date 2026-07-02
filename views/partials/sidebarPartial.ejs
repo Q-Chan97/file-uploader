@@ -6,7 +6,7 @@
         <h1>Vaultly</h1>
     </a>
     <h2>Welcome, <%= locals.user.username %></h2>
-    <button class="create-folder-button">Create Folder</button>
+    <button class="create-folder-button" onclick=folderDialog.showModal()>Create Folder</button>
     <div class="folders-container">
         <% if (locals.folders) { %>
             <% locals.folders.forEach((folder) => { %>
