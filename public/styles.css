@@ -267,6 +267,40 @@ p, h1, h2, h3, h4, h5, h6 {
     width: 32px;
 }
 
+.folder-info {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 50px;
+    margin-bottom: 20px;
+}
+
+.folder-edit-button {
+    padding: 5px;
+    border-radius: 15px;
+    background-color: white;
+    border: 1px solid black;
+}
+
+.folder-edit-button:hover {
+    color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+    cursor: pointer;
+}
+
+.folder-delete-button {
+    padding: 5px;
+    border-radius: 15px;
+    background-color: white;
+    border: 1px solid black;
+}
+
+.folder-delete-button:hover {
+    color: var(--delete-color);
+    border: 1px solid var(--delete-color);
+    cursor: pointer;
+}
+
 /* Files */
 
 .files-container {
