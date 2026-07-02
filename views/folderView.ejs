@@ -16,7 +16,14 @@
                 <%-include("./partials/uploadDialogPartial.ejs") %>
                 <%-include("./partials/uploadButtonPartial.ejs") %>
                 <%-include("./partials/newFolderPartial.ejs") %>
-                <h2><%= folder.name %></h2>
+                <%-include("./partials/updateFolderPartial.ejs") %>
+                <div class="folder-info">
+                    <h2><%= folder.name %></h2>
+                    <button type="button" class="folder-edit-button" onclick="updateFolderDialog.showModal()">Rename Folder</button>
+                    <form method="POST" action="/folder/<%= folder.id %>/delete">
+                        <button type="submit" class="folder-delete-button">Delete Folder</button>
+                    </form>
+                </div>
                 <div>
                     <ul class="files-container">
                         <% if (locals.files && files.length > 0) { %>
@@ -26,7 +33,7 @@
 
                                         <p>Created on: <span class="date" data-date="<%= file.uploadedAt %>"></span></p>
 
-                                        <p>Size: <%= file.fileSize %> bytes</p>
+                                        <p>Size: <%= (Number(file.fileSize) / 1048576).toFixed(2) %> mb</p>
 
                                         <p>Kind: <%= file.fileType %></p>
 
@@ -59,6 +66,7 @@
     <script>
         const dialog = document.getElementById("upload-dialog");
         const folderDialog = document.getElementById("folder-dialog");
+        const updateFolderDialog = document.getElementById("update-folder-dialog");
 
         document.querySelectorAll(".date").forEach((el) => {
             const date = new Date(el.dataset.date);
