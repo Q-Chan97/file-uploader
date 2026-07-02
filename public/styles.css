@@ -205,10 +205,12 @@ p, h1, h2, h3, h4, h5, h6 {
     flex-direction: column;
     padding: 5px;
     margin-top: 5px;
+    gap: 5px;
 }
 
 .folder-link {
     text-decoration: none;
+    text-align: center;
     color: white;
     background-color: var(--light-color);
     padding: 3px 15px;
@@ -259,7 +261,16 @@ p, h1, h2, h3, h4, h5, h6 {
 
 /* Files */
 
+.files-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    overflow: auto;
+}
+
 .file-row {
     display: flex;
     flex-direction: row;
+    width: 100%;
+    justify-content: space-evenly;
 }
