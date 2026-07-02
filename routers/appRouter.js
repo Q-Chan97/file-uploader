@@ -1,5 +1,5 @@
 import Router from "express";
-import { getHome, uploadFile, ensureAuthenticated, getFolderView, createFolder, deleteFile, downloadFile } from "../controllers/appController.js";
+import { getHome, uploadFile, ensureAuthenticated, getFolderView, createFolder, deleteFile, downloadFile, renameFolder, deleteFolder } from "../controllers/appController.js";
 
 import multer from "multer";
 const upload = multer({ dest: "uploads/" });
@@ -11,6 +11,10 @@ appRouter.post("/uploadFile", upload.single("newFile"), uploadFile);
 appRouter.get("/folder/:folderId", ensureAuthenticated, getFolderView);
 
 appRouter.post("/newFolder", createFolder);
+
+appRouter.post("/folder/:folderId/edit", renameFolder);
+
+appRouter.post("/folder/:folderId/delete", deleteFolder);
 
 appRouter.post("/file/:fileId/delete", deleteFile);
 
