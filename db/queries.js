@@ -82,6 +82,15 @@ export const getAllUserFiles = async (userId) => {
     return await prisma.file.findMany({
         where: {
             userId: userId,
+        },
+        include: {folder: true},
+    })
+}
+
+export const getFileById = async (fileId) => {
+    return await prisma.file.findUnique({
+        where: {
+            id: fileId,
         }
     })
 }
@@ -98,6 +107,15 @@ export const getFilesByFolderId = async(folderId) => {
     return await prisma.file.findMany({
         where: {
             folderId: folderId,
+        },
+        include: {folder: true},
+    })
+}
+
+export const deleteSingleFile = async (fileId) => {
+    return await prisma.file.delete({
+        where: {
+            id: fileId,
         }
     })
 }
