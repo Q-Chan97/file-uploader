@@ -1,4 +1,4 @@
-import { getUserFolders, createNewFile, getAllUserFiles, getFolderById, getFilesByFolderId } from "../db/queries.js";
+import { getUserFolders, createNewFile, getAllUserFiles, getFolderById, getFilesByFolderId, createNewFolder } from "../db/queries.js";
 
 export async function ensureAuthenticated (req, res, next) {
     if (req.isAuthenticated()) {
@@ -35,4 +35,11 @@ export async function getFolderView(req, res) {
     const folderFiles = await getFilesByFolderId(folderId);
 
     res.render("folderView", {user: req.user, folders: folders, folder: folder, files: folderFiles})
+}
+
+export async function createFolder(req, res) {
+    const folderName = req.body.folderName;
+    const folder = await createNewFolder(req.user.id, folderName);
+
+    res.redirect(`/folder/${folder.id}`);
 }
