@@ -1,4 +1,4 @@
-import { getUserFolders, createNewFile, getAllUserFiles, getFolderById, getFilesByFolderId, createNewFolder } from "../db/queries.js";
+import { getUserFolders, createNewFile, getAllUserFiles, getFolderById, getFilesByFolderId, createNewFolder, deleteSingleFile, getFileById } from "../db/queries.js";
 
 export async function ensureAuthenticated (req, res, next) {
     if (req.isAuthenticated()) {
@@ -42,4 +42,18 @@ export async function createFolder(req, res) {
     const folder = await createNewFolder(req.user.id, folderName);
 
     res.redirect(`/folder/${folder.id}`);
+}
+
+export async function deleteFile(req, res) {
+    const fileId = parseInt(req.params.fileId);
+    await deleteSingleFile(fileId);
+
+    res.redirect(req.get("Referrer")); // Sends user back
+}
+
+export async function downloadFile(req, res) {
+    const fileId = parseInt(req.params.fileId);
+    const file = await getFileById(fileId);
+
+    res.download(file.locationPath, file.fileName);
 }
