@@ -1,5 +1,6 @@
 import { prisma } from "./prisma.js"
 import path from "node:path"
+import supabase from "./supabaseClient.js"
 
 export const createUser = async (username, password, email) => {
     return await prisma.user.create({
@@ -62,20 +63,51 @@ function checkFileExt(file) {
 
 export const createNewFile = async (newFile, userId, folderId) => {
     const goodFile = checkFileExt(newFile);
+
+    // Supabase file saving
     if (goodFile) {
+        const { data, error } = await supabase.storage
+            .from("vaultly-files")
+            .upload(`${userId}/${newFile.originalname}`, newFile.buffer, {
+                contentType: newFile.mimetype,
+            });
+
+        if (error) throw new Error(error.message);
+
+        const { data: urlData } = supabase.storage
+            .from("vaultly-files")
+            .getPublicUrl(data.path);
+        
         return await prisma.file.create({
-        data: {
-            fileName: newFile.originalname,
-            fileSize: newFile.size,
-            fileType: goodFile,
-            locationPath: newFile.path,
-            userId: userId,
-            folderId: folderId ? parseInt(folderId) : null,
-        }
-    })
+            data: {
+                fileName: newFile.originalname,
+                fileSize: newFile.size,
+                fileType: goodFile,
+                locationPath: urlData.publicUrl,
+                userId: userId,
+                folderId: folderId ? parseInt(folderId) : null,
+            }
+        })
     } else {
-        throw new Error("")
+        throw new Error("Invalid file type")
     }
+
+    // Saving files in filesystem
+
+    // if (goodFile) {
+    //     return await prisma.file.create({
+    //     data: {
+    //         fileName: newFile.originalname,
+    //         fileSize: newFile.size,
+    //         fileType: goodFile,
+    //         locationPath: newFile.path,
+    //         userId: userId,
+    //         folderId: folderId ? parseInt(folderId) : null,
+    //     }
+    // })
+    // } else {
+    //     throw new Error("")
+    // }
 }
 
 export const getAllUserFiles = async (userId) => {
