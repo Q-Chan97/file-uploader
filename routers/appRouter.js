@@ -2,7 +2,10 @@ import Router from "express";
 import { getHome, uploadFile, ensureAuthenticated, getFolderView, createFolder, deleteFile, downloadFile, renameFolder, deleteFolder } from "../controllers/appController.js";
 
 import multer from "multer";
-const upload = multer({ dest: "uploads/" });
+const upload = multer({ 
+    storage: multer.memoryStorage(),
+    limits: { fileSize: 25 * 1024 * 1024 }, // File sizes limited to 25mb
+});
 
 const appRouter = Router();
 
