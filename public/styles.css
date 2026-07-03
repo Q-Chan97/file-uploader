@@ -114,6 +114,38 @@ p, h1, h2, h3, h4, h5, h6 {
     padding: 5px;
 }
 
+.dialog {
+    border: 2px solid var(--primary-color);
+}
+
+.dialog form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.dialog-buttons-container {
+    display: flex;
+    justify-content: space-evenly;
+    margin: 10px 5px 5px 5px;
+    width: 100%;
+}
+
+.dialog-buttons-container button {
+    border: 1px solid black;
+    padding: 5px;
+}
+
+.dialog-buttons-container button:hover {
+    cursor: pointer;
+}
+
+.dialog-buttons-container button[type=submit] {
+    border: none;
+    background-color: var(--primary-color);
+    color: white;
+}
+
 /* Login */
 
 .auth-container {
