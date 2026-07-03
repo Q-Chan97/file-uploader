@@ -11,6 +11,14 @@
 <body>
     <main class="page-container">
         <div class="auth-container">
+            <% if (locals.errors && locals.errors.length > 0) { %>
+                <%console.log(errors) %>
+                <ul class="error-container">
+                    <% errors.forEach((error) => { %>
+                        <li><%= error %></li>
+                    <% }); %>
+                </ul>
+            <% } %>
             <h1 class="color-title">Vaultly</h1>
             <h2 class="color-title">upload your files</h2>
             <form method="POST" action="/login" class="auth-form">
