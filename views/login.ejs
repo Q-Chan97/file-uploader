@@ -12,7 +12,6 @@
     <main class="page-container">
         <div class="auth-container">
             <% if (locals.errors && locals.errors.length > 0) { %>
-                <%console.log(errors) %>
                 <ul class="error-container">
                     <% errors.forEach((error) => { %>
                         <li><%= error %></li>
