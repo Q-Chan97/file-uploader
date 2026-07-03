@@ -94,6 +94,10 @@ app.use((req, res) => {
 
 //Error handler
 app.use((err, req, res, next) => {
+
+    if (err.code = "LIMIT_FILE_SIZE") {
+        return res.status(400).redirect(req.get("Referrer"))
+    }
     console.error(err);
     res.status(err.status || 500).render("404Page")
 });
