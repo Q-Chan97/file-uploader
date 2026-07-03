@@ -1,4 +1,4 @@
-<dialog id="upload-dialog">
+<dialog id="upload-dialog" class="dialog">
     <form method="POST" action="/uploadFile" enctype="multipart/form-data">
         <div>
             <label for="folder">Choose a folder (optional):</label>
@@ -15,7 +15,7 @@
             <label for="newFile">Choose a file: </label>
             <input type="file" name="newFile" id="newFile">
         </div>
-        <div>
+        <div class="dialog-buttons-container">
             <button type="button" onclick="dialog.close()">Close</button>
             <button type="submit">Upload</button>
         </div>
