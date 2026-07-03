@@ -2,11 +2,13 @@ import bcrypt from "bcryptjs";
 import { createUser, createDefaultFolder } from "../db/queries.js";
 
 export async function getLogin (req, res) {
-    res.render("login")
+    const messages = req.session.messages;
+    req.session.messages = [];
+    res.render("login", {errors: messages})
 }
 
 export async function getSignUp (req, res) {
-    res.render("sign-up")
+    res.render("sign-up", {errors: []})
 }
 
 export async function postSignUp (req, res, next) {
