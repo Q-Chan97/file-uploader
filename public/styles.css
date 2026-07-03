@@ -343,3 +343,13 @@ p, h1, h2, h3, h4, h5, h6 {
 .file-button-container *:hover {
     cursor: pointer;
 }
+
+/* Errors */
+
+.error-container {
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    color: red;
+    width: 80%;
+}
