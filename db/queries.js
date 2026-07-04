@@ -66,9 +66,12 @@ export const createNewFile = async (newFile, userId, folderId) => {
 
     // Supabase file saving
     if (goodFile) {
+        // Path with unique datetime so Supabase won't reject a duplicate path upload
+        const uniquePath = `${userId}/${Date.now()}-${newFile.originalname}`;
+
         const { data, error } = await supabase.storage
             .from("vaultly-files")
-            .upload(`${userId}/${newFile.originalname}`, newFile.buffer, {
+            .upload(uniquePath, newFile.buffer, {
                 contentType: newFile.mimetype,
             });
 
