@@ -385,3 +385,20 @@ p, h1, h2, h3, h4, h5, h6 {
     color: red;
     width: 80%;
 }
+
+.error-icon {
+    width: 60px;
+}
+
+.redirect-container {
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    align-items: center;
+    flex-grow: 1;
+}
+
+.redirect-message {
+    text-decoration: none;
+    color: var(--dark-color);
+}
