@@ -1,6 +1,6 @@
 # Vaultly File Uploader
 
-This is a full stack file uploader built with Node.js and Express, created as part of The Odin Project's Node.js course.
+This is a full stack file uploader written in Typescript and built with Node.js and Express, created as part of The Odin Project's Node.js course.
 
 ## Features:
    - File uploading and storing via Supabase
