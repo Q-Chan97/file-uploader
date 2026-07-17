@@ -1,6 +1,9 @@
 #Env variables
 .env
 
+#Prisma
+src/generated/prisma
+
 #Filesystem uploads
 uploads/
 
