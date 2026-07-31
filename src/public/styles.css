@@ -87,13 +87,13 @@ p, h1, h2, h3, h4, h5, h6 {
 /* Forms */
 
 .form-submit-button {
-    width: 60%;
     align-self: center;
     border: none;
     padding: 0.5rem;
     background-color: var(--primary-color);
     color: #ffffff;
     font-weight: bolder;
+    min-width: 100px;
 
     transition: transform 300ms
 }
@@ -196,6 +196,18 @@ p, h1, h2, h3, h4, h5, h6 {
     padding: 5px 10px;
 }
 
+.toggle-button {
+    background-color: white;
+    color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+    min-width: 175px;
+    padding: 5px 10px;
+}
+
+.toggle-button:hover {
+    cursor: pointer;
+}
+
 /* Sidebar */
 
 .sidebar-container {
@@ -233,10 +245,13 @@ p, h1, h2, h3, h4, h5, h6 {
     border: none;
     padding: 10px;
     margin-top: 5px;
+
+    transition: transform 300ms;
 }
 
 .create-folder-button:hover {
     cursor: pointer;
+    transform: scale(105%);
 }
 
 .folders-container {
@@ -255,6 +270,12 @@ p, h1, h2, h3, h4, h5, h6 {
     padding: 3px 15px;
     box-shadow: 0px 0px 5px var(--dark-color);
     z-index: 1;
+
+    transition: transform 300ms;
+}
+
+.folder-link:hover {
+    transform: scale(105%);
 }
 
 .log-out-button {
@@ -266,6 +287,12 @@ p, h1, h2, h3, h4, h5, h6 {
     background-color: white;
     font-weight: bolder;
     padding: 10px;
+
+    transition: transform 300ms;
+}
+
+.log-out-button:hover {
+    transform: scale(105%);
 }
 
 /* Main Content */
@@ -289,14 +316,24 @@ p, h1, h2, h3, h4, h5, h6 {
     gap: 10px;
     font-weight: bold;
     width: 250px;
+
+    transition: transform 300ms;
 }
 
 .upload-button:hover {
     cursor: pointer;
+    background-color: var(--primary-color);
+    color: white;
+    transform: scale(110%);
 }
 
 .upload-icon {
     width: 32px;
+    fill: var(--primary-color);
+}
+
+.upload-button:hover svg {
+    fill: #ffffff;
 }
 
 .folder-info {
