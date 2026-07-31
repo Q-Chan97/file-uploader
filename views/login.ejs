@@ -29,7 +29,12 @@
                     <label for="password">Password:</label>
                     <input type="password" name="password" id="password">
                 </div>
-                <button type="submit" class="form-submit-button">Log In</button>
+                <div class="sign-up-btn-container">
+                    <button type="button" id="toggle-button" class="toggle-button">
+                        Show Password
+                    </button>
+                    <button type="submit" class="form-submit-button">Log In</button>
+                </div>
             </form>
             <div class="auth-row">
                 <p>Don't have an account? </p>
@@ -38,4 +43,15 @@
         </div>
     </main>
 </body>
+<script>
+    let isShowing = false;
+    const toggleBtn = document.getElementById("toggle-button");
+    const passwordInput = document.getElementById("password");
+
+    toggleBtn.addEventListener("click", () => {
+        isShowing = !isShowing;
+        passwordInput.type = isShowing ? "text" : "password";
+        toggleBtn.textContent = isShowing ? "Hide Password" : "Show Password";
+    });
+</script>
 </html>

@@ -41,6 +41,9 @@
                 </div>
 
                 <div class="sign-up-btn-container">
+                    <button type="button" id="toggle-button" class="toggle-button">
+                       Hide Password
+                    </button>
                     <a href="/login">Cancel</a>
                     <button class="confirm-button" type="submit">Submit</button>
                 </div>
@@ -48,4 +51,17 @@
         </div>
     </main>
 </body>
+<script>
+        let isShowing = true;
+        const toggleBtn = document.getElementById("toggle-button");
+        const passwordInput = document.getElementById("password");
+        const confirmPasswordInput = document.getElementById("confirm-password");
+
+        toggleBtn.addEventListener("click", () => {
+            isShowing = !isShowing;
+            passwordInput.type = isShowing ? "text" : "password";
+            confirmPasswordInput.type = isShowing ? "text" : "password";
+            toggleBtn.textContent = isShowing ? "Hide Password" : "Show Password";
+        });
+</script>
 </html>
